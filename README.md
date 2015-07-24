@@ -32,4 +32,6 @@ anubiann00b/AsciiPanel                            0       65
 anubiann00b/Bang                                  0       65
 anubiann00b/Berserker                             61     126
 ...
+
+Total Commits: 1337
 ```
