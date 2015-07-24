@@ -1,21 +1,25 @@
 from github3 import login
 from github3.exceptions import ClientError
 from github3.exceptions import AuthenticationFailed
-from github3.exceptions import GitHubError
-import requests
 from io import BytesIO
+import requests
+import sys
 
-with open('CREDS') as f:
-    user = f.readline().strip()
-    password = f.readline().strip()
+if (len(sys.argv) == 2):
+    print
+    print "    Include a 'CREDS' file with username and password on the first two lines."
+    print "    Or pass username and password as arguments to this script."
+    print "    See https://github.com/anubiann00b/CommitCount for more info."
+    sys.exit()
+elif (len(sys.argv) == 3):
+    user = sys.argv[1]
+    password = sys.argv[2]
+else:
+    with open('CREDS') as f:
+        user = f.readline().strip()
+        password = f.readline().strip()
 
 gh = login(user, password=password)
-
-if (gh is None):
-    r = requests.Response()
-    r.status_code = 401
-    r.raw = BytesIO('Authentication Failed')
-    raise AuthenticationFailed(r)
 
 account = gh.me()
 
