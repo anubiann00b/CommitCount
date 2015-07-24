@@ -2,6 +2,12 @@
 
 Simple python script to count all your commits for projects hosted on GitHub.
 
+#### Setup:
+
+```
+pip install -r requirements.txt
+```
+
 #### Usage:
 
 ```
