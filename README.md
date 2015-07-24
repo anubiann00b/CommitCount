@@ -8,10 +8,11 @@ Simple python script to count all your commits for projects hosted on GitHub.
 python commitcount.py username password
 ```
 
-You can also supply your username and password through the CREDS file, formatted as `username:password`. For example:
+You can also supply your username and password through the CREDS file, with each on a seperate line. For example:
 
 ```
-anubiann00b:hunter2
+anubiann00b
+hunter2
 ```
 
 And then call it without any parameters:
