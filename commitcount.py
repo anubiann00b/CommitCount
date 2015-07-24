@@ -5,11 +5,20 @@ from io import BytesIO
 import requests
 import sys
 
+def displayHelp():
+    print 'help'
+
 if (len(sys.argv) == 2):
-    print "    Include a 'CREDS' file with username and password on the first two lines."
-    print "    Or pass username and password as arguments to this script."
-    print "    See https://github.com/anubiann00b/CommitCount for more info."
-    sys.exit()
+    if (sys.argv[1] == '-h' or sys.argv[1] == '--help'):
+        displayHelp()
+        sys.exit()
+    try:
+        with open(sys.argv[1]) as f:
+            user = f.readline().strip()
+            password = f.readline().strip()
+    except IOError as e:
+        print 'Failed to open file: ' + sys.argv[1]
+        sys.exit()
 elif (len(sys.argv) == 3):
     user = sys.argv[1]
     password = sys.argv[2]
