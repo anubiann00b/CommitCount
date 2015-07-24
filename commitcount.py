@@ -6,7 +6,6 @@ import requests
 import sys
 
 if (len(sys.argv) == 2):
-    print
     print "    Include a 'CREDS' file with username and password on the first two lines."
     print "    Or pass username and password as arguments to this script."
     print "    See https://github.com/anubiann00b/CommitCount for more info."
@@ -21,7 +20,11 @@ else:
 
 gh = login(user, password=password)
 
-account = gh.me()
+try:
+    account = gh.me()
+except AuthenticationFailed as e:
+    print 'Authentication Failed for user ' + user + '.'
+    sys.exit()
 
 cnt = 0
 for repo in gh.repositories(type='all'):
